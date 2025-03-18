@@ -1,0 +1,26 @@
+1. getDerivedStateFromProps
+ -- getDerivedStateFromProps() is a static method that is called whenever there is a change in the component's props. This method takes the props and the current state of the component as arguments and returns a new state object. The new state object is then used to update the component's state.
+
+ --Let's look at an example of how to use getDerivedStateFromProps. Suppose we have a component that displays a user's comment. The comment text is passed as a prop to the component. Whenever the prop changes, we want to update the component's state with the new comment text.
+
+
+
+
+ 2.componentDidMount:(similar to useEffect hook)  it call only one time if you 
+ --Fetch data from an API to populate the component's state.
+ --Starting subscriptions or data streams.
+ --Setting up event listeners or DOM measurements.
+ --Initializing third-party libraries or plugins that require access to the DOM.
+
+ -componentDidMount is only called once in the lifecycle of any component, re-render will not reinitialize the component.
+ -componentDidUpdate will be called where you can manage your logic.
+
+ 3. shouldComponentUpdate
+ --Use shouldComponentUpdate() to let React know if a component's output is not affected by the current change in state or props. The default behavior is to re-render on every state change
+ --
+    shouldComponentUpdate() {
+      console.log('false')
+     return false
+    }
+
+    default is true -so when we update 
