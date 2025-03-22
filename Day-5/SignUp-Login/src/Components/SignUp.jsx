@@ -33,7 +33,6 @@ const SignUp = () => {
         console.log(jsonData);
 
         axios.post('http://localhost:8000/students', jsonData).then((res)=>console.log(res.status))
-        localStorage.setItem('user',JSON.stringify({name, email}))
         setName('')
         setEmail('')
         setPassword('') 

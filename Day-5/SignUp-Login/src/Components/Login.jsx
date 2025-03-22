@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -25,6 +25,7 @@ const Login = () => {
     const findUser = user.find((e)=> e.email === email && e.password === password)
     if(findUser){
         alert('Login successfully')
+        localStorage.setItem('user', JSON.stringify(findUser))
         navigate('/home')
     }else{
         alert('please Register first!!')
@@ -37,11 +38,20 @@ const Login = () => {
     
 
     return (
-        <form action=""  onSubmit={handleLogin} className='flex flex-col w-96 gap-5 m-auto mt-10 border shadow-md p-10'>
+      <>
+      <div className='w-96 mt-10 border shadow-md p-5 text-center mx-auto'>
+
+        <form action=""  onSubmit={handleLogin} className='flex flex-col gap-5 m-auto p-5'>
             <input type="email" name="" id="" placeholder='Enter your email' className='border px-2 py-1' value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="text" name="" id="" placeholder='Enter your password' className='border px-2 py-1' value={password} onChange={(e) => setPassword(e.target.value)} />
             <button className='bg-yellow-500 py-2 px-4'>Login</button>
         </form>
+       <p>if you are not registered yet!
+        <Link to='/' className='text-blue-700'> SignUp</Link>
+       </p>
+
+      </div>
+      </>
     )
 }
 

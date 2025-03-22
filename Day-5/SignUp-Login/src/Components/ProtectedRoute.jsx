@@ -1,12 +1,9 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = (props) => {
-    // let auth={'token': false}
-    return (
-        props.isAuthenticated ? 
-        <Outlet /> : <Navigate to="/" />
-    )
-}
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem("user"); // Check if user data exists in localStorage
+
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 export default ProtectedRoute;
